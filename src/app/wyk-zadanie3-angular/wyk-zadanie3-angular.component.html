@@ -1,0 +1,36 @@
+<h3>People in the room</h3>
+<p>Max allowed {{ max }}</p>
+<p>Current number {{ currentNumber }}</p>
+
+<button (click)="addOne()">+1</button>
+<button [disabled]="currentNumber === 0" (click)="removeOne()">-1</button>
+
+<h2 *ngIf="currentNumber >= max">Max number reached!</h2>
+<br />
+<input matInput type="text" [(ngModel)]="name" (keyup.enter)="add()" />
+
+<select [(ngModel)]="pref">
+  <option *ngFor="let x of preferences" [value]="x.value">
+    {{ x.value }}
+  </option>
+</select>
+
+<button (click)="add()">add</button>
+<button (click)="save()">save</button>
+<br />
+<p>Currently in the room</p>
+<button (click)="clear()">clear</button>
+<ul *ngFor="let student of list; let i = index">
+  {{
+    i + 1
+  }}
+  {{
+    student.name
+  }}
+  like
+  {{
+    student.preferences
+  }}
+  <button (click)="removeStudent(student)">X</button>
+  <button (click)="edit(student, i)">edit</button>
+</ul>
